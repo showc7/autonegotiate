@@ -19,10 +19,17 @@ class SetupAutonegotiateOnBootAction:
         if Utils.exists(interface):
             print("already setup")
             return
+        
         lines = []
+        
         with open(setup_file, 'w+') as file:
             lines = list(filter(lambda line: len(line) > 0, file.read().split('\n')))
+        
+        if '#!/bin/bash' not in lines:
+            lines.append('#!/bin/bash')
+        
         lines.append('ethtool -s ' + interface + ' autoneg off')
+        
         with open(setup_file, 'w') as file:
             for line in lines:
                 file.write(line)
