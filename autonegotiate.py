@@ -26,7 +26,7 @@ class SetupAutonegotiateOnBootAction:
             lines = list(filter(lambda line: len(line) > 0, file.read().split('\n')))
         
         if '#!/bin/bash' not in lines:
-            lines.append('#!/bin/bash')
+            lines.append('#!/bin/bash\n')
         
         lines.append('ethtool -s ' + interface + ' autoneg off')
         
