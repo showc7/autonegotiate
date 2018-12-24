@@ -3,7 +3,7 @@
 import os
 import argparse
 
-setup_file = "test.txt"
+setup_file = "/etc/rc.local"
 
 class Utils:
     @staticmethod
